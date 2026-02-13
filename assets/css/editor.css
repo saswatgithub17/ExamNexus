@@ -1,0 +1,239 @@
+/* Editor Styles */
+.editor-content {
+    padding: 0;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-header {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.language-selector select {
+    background-color: var(--code-bg);
+    color: var(--light-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.btn-run {
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-run:hover {
+    background-color: #0d9c6b;
+}
+
+.editor-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.code-editor {
+    flex: 1;
+    position: relative;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.CodeMirror {
+    height: 100% !important;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.output-container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--code-bg);
+}
+
+.output-tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-button {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    color: var(--gray-color);
+    cursor: pointer;
+    position: relative;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+}
+
+.tab-button.active {
+    color: var(--light-color);
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--highlight-color);
+}
+
+.tab-content {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content textarea {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    color: var(--light-color);
+    font-family: 'Roboto Mono', monospace;
+    resize: none;
+    outline: none;
+    padding: 0.5rem;
+}
+
+.execution-output, .execution-error, .execution-placeholder {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Roboto Mono', monospace;
+    margin: 0;
+}
+
+.execution-output {
+    color: var(--light-color);
+}
+
+.execution-error {
+    color: var(--danger-color);
+}
+
+.execution-placeholder {
+    color: var(--gray-color);
+}
+
+.execution-meta {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--gray-color);
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-badge.success {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: var(--success-color);
+}
+
+.status-badge.error {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: var(--danger-color);
+}
+
+.status-badge.pending {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: var(--warning-color);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .editor-container {
+        flex-direction: column;
+    }
+    
+    .code-editor, .output-container {
+        width: 100%;
+        height: 50%;
+    }
+    
+    .code-editor {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Error and output styling */
+.execution-output {
+    background-color: rgba(15, 23, 42, 0.7);
+    padding: 1rem;
+    border-radius: 4px;
+    color: var(--light-color);
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+.execution-error {
+    background-color: rgba(239, 68, 68, 0.2);
+    padding: 1rem;
+    border-radius: 4px;
+    color: var(--danger-color);
+    white-space: pre-wrap;
+    margin: 0;
+    border-left: 3px solid var(--danger-color);
+}
+
+.execution-placeholder {
+    color: var(--gray-color);
+    font-style: italic;
+    padding: 1rem;
+    margin: 0;
+}
+
+.execution-meta {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--gray-color);
+}
+
+/* Input tab styling */
+#input-tab textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    background-color: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--light-color);
+    border-radius: 4px;
+    font-family: 'Roboto Mono', monospace;
+    resize: vertical;
+}
